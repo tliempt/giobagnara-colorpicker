@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .btn-toolbar .btn {
-            margin: 2px;
-        }
-    </style>
 </head>
 <body>
 <div id="options" class="container">
     <h6 class="pt-3 pb-1">SIZE</h6>
-    <div class="btn-toolbar" role="toolbar">
-        <input type="radio" id="opt_272" name="opt_84" value="val_272" class="btn-check" autocomplete="off" required="required">
-        <label tabindex="0" class="btn btn-outline-dark rounded-0 p-1 m-2" for="opt_272">
-            16,5X16,5 CM H 8,5 CM
-        </label>
-        <input type="radio" id="opt_273" name="opt_84" value="val_273" class="btn-check" autocomplete="off" required="required">
-        <label tabindex="1" class="btn btn-outline-dark rounded-0 p-1 m-2" for="opt_273">
-            23,5X23,5 CM H 8,5
-        </label>
-    </div>
-    <h6 class="pt-3 pb-1">COLOR</h6>
-    <div class="btn-toolbar" role="toolbar">
-        <!-- Dynamically generated color options will go here -->
+    <div class="flex justify-end">
+        <div class="bg-gray-100 p-3 rounded-md border inline-flex space-x-2">
+            <input type="radio" id="opt_272" name="opt_84" value="val_272" class="hidden">
+            <label for="opt_272" class="btn btn-outline-dark rounded-none px-3 py-1">
+                16,5X16,5 CM H 8,5 CM
+            </label>
+
+            <input type="radio" id="opt_273" name="opt_84" value="val_273" class="hidden">
+            <label for="opt_273" class="btn btn-outline-dark rounded-none px-3 py-1">
+                23,5X23,5 CM H 8,5
+            </label>
+        </div>
     </div>
 </div>
-
+    <h6 class="pt-3 pb-1">COLOR</h6>
+    <div class="btn-toolbar" role="toolbar">
+    </div>
+</div>
 <script src="assets/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

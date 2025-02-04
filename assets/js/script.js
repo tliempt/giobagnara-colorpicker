@@ -29,6 +29,12 @@ const colorNames = [
 // Function to generate HTML for color options
 function generateColorOptions() {
     const toolbar = document.querySelector('.btn-toolbar[role="toolbar"]');
+    toolbar.classList.add("flex", "justify-end"); // Align to the right
+
+    // Create a container for the buttons
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "bg-gray-100 p-3 rounded-md border inline-flex flex-wrap gap-2";
+
     imageNames.forEach((imageName, index) => {
         const optId = `opt_${26800 + index}`; // Unique ID for each option
         const colorName = colorNames[index];
@@ -38,33 +44,28 @@ function generateColorOptions() {
         input.id = optId;
         input.name = 'opt_1362';
         input.value = `val_${26800 + index}`;
-        input.className = 'btn-check';
-        input.autocomplete = 'off';
-        input.required = 'required';
+        input.className = 'hidden';
 
         const label = document.createElement('label');
-        label.tabIndex = index;
-        label.className = 'btn btn-outline-dark rounded-0 popover-dismiss p-1 m-2';
+        label.className = 'btn btn-outline-dark rounded-none px-3 py-1 flex items-center';
         label.htmlFor = optId;
         label.title = colorName;
-        label.setAttribute('data-bs-toggle', 'popover');
-        label.setAttribute('data-bs-trigger', 'hover');
-        label.setAttribute('data-bs-placement', 'top');
-        label.setAttribute('data-bs-html', 'true');
-        label.setAttribute('data-bs-content', `<img src='img/${imageName}' class='center-block' border='0' alt='' width='130' height='130'>`);
 
         const img = document.createElement('img');
         img.src = `img/${imageName}`;
-        img.alt = '';
-        img.border = '0';
-        img.width = '50';
-        img.height = '50';
+        img.alt = colorName;
+        img.className = "w-10 h-10 border border-gray-300 rounded";
 
         label.appendChild(img);
-        toolbar.appendChild(input);
-        toolbar.appendChild(label);
+        label.appendChild(document.createTextNode(` ${colorName}`));
+
+        buttonContainer.appendChild(input);
+        buttonContainer.appendChild(label);
     });
+
+    toolbar.appendChild(buttonContainer);
 }
 
 // Generate color options when the page loads
 document.addEventListener("DOMContentLoaded", generateColorOptions);
+
