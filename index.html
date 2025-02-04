@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<div id="options" class="container">
-    <h6 class="pt-3 pb-1">SIZE</h6>
+<body class="p-10 bg-gray-100">
+
+<!-- Outer Box -->
+<div class="max-w-1xl w-full mx-auto bg-white p-6 rounded-lg border shadow-md">
+
+    <!-- SIZE Section -->
+    <h6 class="pt-3 pb-1 font-semibold">SIZE</h6>
     <div class="flex justify-end">
         <div class="bg-gray-100 p-3 rounded-md border inline-flex space-x-2">
             <input type="radio" id="opt_272" name="opt_84" value="val_272" class="hidden">
@@ -22,11 +26,12 @@
             </label>
         </div>
     </div>
+
+    <!-- COLOR Section -->
+    <h6 class="pt-5 pb-1 font-semibold">COLOR</h6>
+    <div class="btn-toolbar flex justify-end" role="toolbar"></div>
 </div>
-    <h6 class="pt-3 pb-1">COLOR</h6>
-    <div class="btn-toolbar" role="toolbar">
-    </div>
-</div>
+
 <script src="assets/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
