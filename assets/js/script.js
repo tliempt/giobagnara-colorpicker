@@ -1,71 +1,72 @@
 // List of image names
 const imageNames = [
-    "130219143405.jpeg", "130219143516.jpeg", "130219143640.jpeg", "130219143738.jpeg",
-    "130219143820.jpeg", "130219143904.jpeg", "130219144001.jpeg", "130219144049.jpeg",
-    "130219144216.jpeg", "141215103641.jpeg", "141215103702.jpeg", "151215173335.jpeg",
-    "151215173428.jpeg", "151215173516.jpeg", "151215173547.jpeg", "151215173616.jpeg",
-    "151215173644.jpeg", "151215173702.jpeg", "151215174421.jpeg", "151215173829.jpeg",
-    "151215173950.jpeg", "151215174013.jpeg", "151215174033.jpeg", "151215174103.jpeg",
-    "151215174311.jpeg", "151215174421.jpeg", "151215174542.jpeg", "151215174652.jpeg",
-    "240220092313.jpeg", "240220104541.jpeg", "240220104637.jpeg", "240220104740.jpeg",
-    "240220104829.jpeg", "280218090840.jpeg", "280218091033.jpeg", "280218091304.jpeg",
-    "280218091609.jpeg", "280218091828.jpeg", "280323093229.jpeg", "280323093355.jpeg",
-    "280323093649.jpeg", "280323094535.jpeg", "280323094718.jpeg", "280323094822.jpeg",
-    "280323095012.jpeg", "280323095121.jpeg", "280323095344.jpeg", "280323095423.jpeg",
-    "280323095523.jpeg"
+    "CAPUCCINO.jpeg", "SCARLET.jpeg", "ICE.jpeg", "CARAMEL.jpeg", "CIPRESS.jpeg", "CAPRI.jpeg",
+    "MUSTARD.jpeg", "STONE.jpeg", "NUDE.jpeg", "APPLE GREEN.jpeg", "LODEN GREEN.jpeg", "ORANGE.jpeg",
+    "IVORY.jpeg", "SIENA BROWN.jpeg", "BROWN.jpeg", "LIGHT BLUE.jpeg", "ULTRAMARINE.jpeg", "ROYAL BLUE.jpeg",
+    "RED.jpeg", "VIOLET.jpeg", "GRAPHITE.jpeg", "BLACK.jpeg", "MUD.jpeg", "TURQUOISE.jpeg", "LEMON.jpeg",
+    "PETROL.jpeg", "PINK.jpeg", "MANGO.jpeg", "SMOKE.jpeg", "STORM GREY.jpeg", "MINT.jpeg", "SLATE.jpeg",
+    "RUST.jpeg", "LIGHT GREY.jpeg", "WHITE.jpeg", "LILAC GREY.jpeg", "PISTACHIO.jpeg", "SKY.jpeg", "MOKA.jpeg",
+    "SPUN SUGAR.jpeg", "CELADON GREEN.jpeg", "VANILLA.jpeg", "DEEP GREEN.jpeg", "ALMOND.jpeg", "ORCHID ICE.jpeg",
+    "IRIS PURPLE.jpeg", "ICED COFFEE.jpeg", "AMMONITE.jpeg", "BLUSH PINK.jpeg"
 ];
 
-// Color names corresponding to the images
+// Corresponding color names
 const colorNames = [
     "CAPUCCINO", "SCARLET", "ICE", "CARAMEL", "CIPRESS", "CAPRI", "MUSTARD", "STONE",
     "NUDE", "APPLE GREEN", "LODEN GREEN", "ORANGE", "IVORY", "SIENA BROWN", "BROWN",
-    "LIGHT BLUE", "ULTRAMARINE", "ROYAL BLUE", "PETROL", "VIOLET", "GRAPHITE", "BLACK",
+    "LIGHT BLUE", "ULTRAMARINE", "ROYAL BLUE", "RED", "VIOLET", "GRAPHITE", "BLACK",
     "MUD", "TURQUOISE", "LEMON", "PETROL", "PINK", "MANGO", "SMOKE", "STORM GREY",
     "MINT", "SLATE", "RUST", "LIGHT GREY", "WHITE", "LILAC GREY", "PISTACHIO", "SKY",
     "MOKA", "SPUN SUGAR", "CELADON GREEN", "VANILLA", "DEEP GREEN", "ALMOND", "ORCHID ICE",
     "IRIS PURPLE", "ICED COFFEE", "AMMONITE", "BLUSH PINK"
 ];
 
-// Function to generate HTML for color options
+// Function to generate color options in a grid format
 function generateColorOptions() {
     const toolbar = document.querySelector('.btn-toolbar[role="toolbar"]');
-    toolbar.classList.add("flex", "justify-end"); // Align to the right
 
-    // Create a container for the buttons
-    const buttonContainer = document.createElement("div");
-    buttonContainer.className = "bg-gray-100 p-3 rounded-md border inline-flex flex-wrap gap-2";
+    // Create a wrapper div for the grid
+    const gridContainer = document.createElement('div');
+    gridContainer.className = "grid grid-cols-7 gap-4"; // Tailwind grid
 
     imageNames.forEach((imageName, index) => {
-        const optId = `opt_${26800 + index}`; // Unique ID for each option
+        const optId = `opt_${26800 + index}`;
         const colorName = colorNames[index];
 
+        // Create radio input
         const input = document.createElement('input');
         input.type = 'radio';
         input.id = optId;
         input.name = 'opt_1362';
         input.value = `val_${26800 + index}`;
-        input.className = 'hidden';
+        input.className = 'hidden'; // Hide default radio button
 
+        // Create label (acts as a box)
         const label = document.createElement('label');
-        label.className = 'btn btn-outline-dark rounded-none px-3 py-1 flex items-center';
         label.htmlFor = optId;
-        label.title = colorName;
+        label.className = 'cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition';
 
+        // Image inside the box
         const img = document.createElement('img');
         img.src = `img/${imageName}`;
         img.alt = colorName;
-        img.className = "w-10 h-10 border border-gray-300 rounded";
+        img.width = 60;
+        img.height = 60;
+        img.className = 'rounded shadow-sm';
+
+        // Color name under the image
+        const text = document.createElement('span');
+        text.innerText = colorName;
+        text.className = 'text-xs font-semibold mt-2';
 
         label.appendChild(img);
-        label.appendChild(document.createTextNode(` ${colorName}`));
-
-        buttonContainer.appendChild(input);
-        buttonContainer.appendChild(label);
+        label.appendChild(text);
+        gridContainer.appendChild(input);
+        gridContainer.appendChild(label);
     });
 
-    toolbar.appendChild(buttonContainer);
+    toolbar.appendChild(gridContainer);
 }
 
-// Generate color options when the page loads
+// Run function when page loads
 document.addEventListener("DOMContentLoaded", generateColorOptions);
-
