@@ -50,8 +50,8 @@ function generateColorOptions() {
         const img = document.createElement('img');
         img.src = `img/${imageName}`;
         img.alt = colorName;
-        img.width = 60;
-        img.height = 60;
+        img.width = 40;
+        img.height = 40;
         img.className = 'rounded shadow-sm';
 
         // Color name under the image
