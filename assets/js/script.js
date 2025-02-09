@@ -63,11 +63,10 @@ const colorNames = [
 function generateColorOptions() {
     const toolbar = document.querySelector('.btn-toolbar[role="toolbar"]');
 
-    // Create a wrapper div for the grid
+    // Create a wrapper div for the grid with more columns on smaller screens
     const gridContainer = document.createElement('div');
-    gridContainer.className = "grid grid-cols-7 gap-4"; // Tailwind grid
+    gridContainer.className = "grid grid-cols-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4"; // More columns on mobile
 
-    // Use the original imageNames and colorNames arrays
     imageNames.forEach((imageName, index) => {
         const optId = `opt_${26800 + index}`;
         const colorName = colorNames[index];
@@ -76,34 +75,55 @@ function generateColorOptions() {
         const input = document.createElement('input');
         input.type = 'radio';
         input.id = optId;
-        input.name = 'opt_1362';
-        input.value = `val_${26800 + index}`;
-        input.className = 'hidden'; // Hide default radio button
+        input.name = 'colorSelection';
+        input.value = colorName;
+        input.className = 'hidden';
 
         // Create label (acts as a button)
         const label = document.createElement('label');
         label.htmlFor = optId;
-        label.className = 'color-button cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition relative';
+        label.className = 'color-button cursor-pointer flex flex-col items-center p-2 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition relative';
 
-        // Image inside the button
+        // Image inside the button with responsive sizes
         const img = document.createElement('img');
         img.src = `img/${imageName}`;
         img.alt = colorName;
-        img.width = 50;
-        img.height = 50;
+        img.className = 'w-8 h-8 sm:w-12 sm:h-12 object-contain'; // Use object-contain to prevent image clipping
 
         // Enlarged image and name on hover
         const enlargedImage = document.createElement('div');
-        enlargedImage.className = 'enlarged-image';
+        enlargedImage.className = 'enlarged-image hidden absolute left-1/2 transform -translate-x-1/2 mt-2 p-2 bg-white border rounded-md shadow-lg';
+        enlargedImage.style.top = '100%';
+
         const enlargedImg = document.createElement('img');
         enlargedImg.src = `img/${imageName}`;
         enlargedImg.alt = colorName;
         enlargedImg.width = 120;
         enlargedImg.height = 120;
+        enlargedImg.className = 'mx-auto';
+
         const enlargedText = document.createElement('span');
         enlargedText.innerText = colorName;
+        enlargedText.className = 'font-serif text-center block mt-2';
+
         enlargedImage.appendChild(enlargedImg);
         enlargedImage.appendChild(enlargedText);
+
+        // Add hover effect to show enlarged image
+        label.addEventListener('mouseenter', () => {
+            enlargedImage.classList.remove('hidden');
+        });
+        label.addEventListener('mouseleave', () => {
+            enlargedImage.classList.add('hidden');
+        });
+
+        // Add selection effect
+        input.addEventListener('change', () => {
+            document.querySelectorAll('.color-button').forEach(button => {
+                button.classList.remove('border-blue-500', 'bg-blue-100');
+            });
+            label.classList.add('border-blue-500', 'bg-blue-100');
+        });
 
         label.appendChild(img);
         label.appendChild(enlargedImage);
