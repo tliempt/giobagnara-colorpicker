@@ -45,16 +45,23 @@
 </head>
 <body class="bg-auto bg-no-repeat min-h-[150vh]">
 
+<!-- Language Selector -->
+<div class="w-full flex justify-end p-4">
+    <button id="languageButton" class="border rounded-md p-2 bg-white">
+        <img src="img/language.png" alt="Language" class="w-6 h-6">
+    </button>
+</div>
+
 <!-- Full-width container with centered content -->
 <div class="w-full bg-white rounded-lg border shadow-md overflow-auto min-h-[150vh] p-4">
     <!-- SIZE Section & Radio Buttons -->
     <div class="flex justify-center">
         <div class="text-center">
             <!-- Title -->
-            <h6 class="pb-1 font-serif mb-4 text-base sm:text-xl md:text-1xl lg:text-3xl">Square Tray - Polo</h6>
+            <h6 id="productTitle" class="pb-1 font-serif mb-4 text-base sm:text-xl md:text-1xl lg:text-3xl">Square Tray - Polo</h6>
 
             <!-- Product Description -->
-            <p class="font-serif text-sm sm:text-base md:text-lg text-gray-600">
+            <p id="productDescription" class="font-serif text-sm sm:text-base md:text-lg text-gray-600">
                 A premium square tray, perfect for elegant presentations. Crafted with fine materials and a sleek design, this tray adds a touch of luxury to any space.
             </p>
         </div>
@@ -84,24 +91,34 @@
             </a>
         </div>
     </div>
-    <!-- SIZE Section & Radio Buttons -->
+    <!-- SIZE Section & Radio Buttons & Price -->
     <div class="flex justify-center">
         <div class="text-center">
             <h6 class="pb-1 font-serif mb-4 text-base sm:text-lg md:text-xl lg:text-2xl">SIZE</h6>
             <div class="bg-gray-100 p-3 rounded-md border flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                <input type="radio" id="opt_272" name="opt_84" value="val_272" class="hidden peer/opt_272">
-                <label for="opt_272" class="font-serif cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition peer-checked/opt_272:bg-blue-100 peer-checked/opt_272:text-black w-full sm:w-auto">
-                    38X38 CM H 4 CM
-                </label>
+                <div class="relative">
+                    <input type="radio" id="opt_272" name="opt_84" value="val_272" class="hidden peer/opt_272" checked>
+                    <label for="opt_272" class="font-sans cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition peer-checked/opt_272:bg-blue-100 peer-checked/opt_272:text-black w-full sm:w-auto">
+                        38X38 CM H 4 CM
+                    </label>
+                </div>
 
-                <input type="radio" id="opt_273" name="opt_84" value="val_273" class="hidden peer/opt_273">
-                <label for="opt_273" class="font-serif cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition peer-checked/opt_273:bg-blue-100 peer-checked/opt_273:text-black w-full sm:w-auto">
-                    48X48 CM H 4
-                </label>
+                <div class="relative">
+                    <input type="radio" id="opt_273" name="opt_84" value="val_273" class="hidden peer/opt_273">
+                    <label for="opt_273" class="font-sans cursor-pointer flex flex-col items-center p-3 border rounded-md bg-gray-100 shadow-md hover:bg-gray-200 transition peer-checked/opt_273:bg-blue-100 peer-checked/opt_273:text-black w-full sm:w-auto">
+                        48X48 CM H 4 CM
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Display -->
+            <div class="mt-4">
+                <h3 class="font-serif text-lg sm:text-xl md:text-2xl">
+                 <span id="priceDisplay" class="text-base">€149.00</span>
+                </h3>
             </div>
         </div>
     </div>
-
     <!-- COLORS Section -->
     <div class="flex justify-center mt-5">
         <div class="text-center">
@@ -130,6 +147,7 @@
 </div>
 <script src="assets/js/quantity.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/language.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

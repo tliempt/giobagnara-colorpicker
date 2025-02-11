@@ -1,3 +1,36 @@
+<!--Eventlistener when clicking on the Size buttons to update pricing-->
+document.addEventListener("DOMContentLoaded", function() {
+    const sizeOptions = document.querySelectorAll('input[name="opt_84"]');
+    const priceDisplay = document.getElementById('priceDisplay');
+
+    // Initial price
+    let currentPrice = 149.00;
+
+    function updatePrice() {
+        const selectedSize = document.querySelector('input[name="opt_84"]:checked');
+        currentPrice = selectedSize.id === 'opt_272' ? 149.00 : 199.00;
+        priceDisplay.textContent = `€${currentPrice.toFixed(2)}`;
+        updateTotalPrice(); // Update total price if quantity changes
+    }
+
+    function updateTotalPrice() {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        const total = currentPrice * quantity;
+        priceDisplay.textContent = `€${total.toFixed(2)}`;
+    }
+
+    // Size change listener
+    sizeOptions.forEach(option => {
+        option.addEventListener('change', updatePrice);
+    });
+
+    // Quantity change listeners (add to your existing quantity.js)
+    document.getElementById('increase').addEventListener('click', updateTotalPrice);
+    document.getElementById('decrease').addEventListener('click', updateTotalPrice);
+});
+
+
+
 const imageNames = [
     "LODEN_GREEN.png", // LODEN GREEN
     "DEEP_GREEN.png", // DEEP GREEN
