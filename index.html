@@ -45,15 +45,39 @@
 </head>
 <body class="bg-auto bg-no-repeat min-h-[150vh]">
 
-<!-- Language Selector -->
-<div class="w-full flex justify-end p-4">
-    <button id="languageButton" class="border rounded-md p-2 bg-white">
+<!-- Language Selector Dropdown -->
+<div class="w-full flex justify-end p-4 relative">
+    <!-- Button to toggle dropdown -->
+    <button id="languageButton" class="border rounded-md p-2 bg-white flex items-center space-x-2">
         <img src="img/language-icon.png" alt="Language" class="w-6 h-6">
+        <span>Select Language</span>
     </button>
+
+    <!-- Dropdown Menu -->
+    <div id="languageDropdown" class="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md hidden">
+        <a href="#" data-lang="en" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/gb.svg" alt="English" class="w-5 h-5 mr-2"> English
+        </a>
+        <a href="#" data-lang="nl" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/nl.svg" alt="Nederlands" class="w-5 h-5 mr-2"> Nederlands
+        </a>
+        <a href="#" data-lang="fr" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/fr.svg" alt="Français" class="w-5 h-5 mr-2"> Français
+        </a>
+        <a href="#" data-lang="de" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/de.svg" alt="Deutsch" class="w-5 h-5 mr-2"> Deutsch
+        </a>
+        <a href="#" data-lang="it" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/it.svg" alt="Italiano" class="w-5 h-5 mr-2"> Italiano
+        </a>
+        <a href="#" data-lang="es" class="flex items-center px-4 py-2 hover:bg-gray-100">
+            <img src="img/es.svg" alt="Español" class="w-5 h-5 mr-2"> Español
+        </a>
+    </div>
 </div>
 
 <!-- Full-width container with centered content -->
-<div class="w-full bg-white rounded-lg border shadow-md overflow-auto min-h-[150vh] p-4">
+<div class="w-full bg-white rounded-lg shadow-md overflow-auto min-h-[150vh] p-4">
     <!-- SIZE Section & Radio Buttons -->
     <div class="flex justify-center">
         <div class="text-center">
